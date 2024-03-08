@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+</head>
+<body>
+    <h1 style="background-color: darkolivegreen; color: white; text-align: center;">Pildoras Informaticas</h1>
+    {% include "upper/navbar.html" %}
+    <h3>Curso de programacion</h3>
+    {% block content %} 
+    
+    {% endblock %}
+    <p style="background-color: darkolivegreen; color: white; text-align: right;">Gracias por su visita</p>
+</body>
+</html>

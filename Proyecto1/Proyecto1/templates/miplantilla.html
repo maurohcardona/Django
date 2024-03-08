@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+</head>
+<body>
+    {% include "upper/navbar.html" %}
+
+    <h1 style="color: red;">
+        Hi students, this is our first web with python
+    </h1>
+    {% if person_name == 'Jhon' %}
+        <p>The course is taught by the titular professor</p>
+    {% else %}
+        <p>The course in taught by de subtitute professor</p>
+    {% endif %}
+    <h2>
+        Your teacher will be: {{person_name.upper}} {{person_lastname.upper}}
+    </h2>
+    <h3>
+        Course topics:
+    </h3>
+    <p>
+        <ul>
+            {% if Topics %}
+                {% for topic in Topics %}
+
+                    <li>{{topic}}</li>
+                    
+                {% endfor %}
+            {% else %}
+                <p>No elements to show</p>
+            {% endif %}
+        </ul>
+    </p>
+</body>
+</html>
