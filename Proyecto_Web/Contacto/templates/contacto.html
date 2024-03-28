@@ -1,0 +1,26 @@
+{% extends "Proyecto_web_app/base.html" %}
+
+{% load static %}
+
+{% block title %} Contacto {% endblock %}
+
+{% block content %}
+
+<div class="formulario">
+
+  <form action="" method="POST" >
+    {% csrf_token %}
+    <table>
+
+      {{mi_formulario.as_table}}
+
+    </table>
+
+    <input type="submit" value="enviar">
+
+  </form>
+
+</div>
+
+{% endblock %}
+
