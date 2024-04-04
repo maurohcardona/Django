@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Contacto {% endblock %}
+
+{% block content %}
+    <div class="seccion">
+        <div>
+            <table class="table table-striped" style="margin: 15px; padding: 15px;">
+                <thead>
+                    <tr class="table-success">
+                        <th colspan="5" class="text-center"> Tabla de productos</th>
+                    </tr>
+                    <tr class="table-secondary text-center table-sm">
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock actual</th>
+                        <th>Proovedor</th>
+                        <th>eliminar</th>
+                    </tr>
+                </thead>
+            
+                <tbody>
+                    {% if productos %}
+                        {% for producto in productos %}
+                            <tr class="text-center table-light">
+                                <td>{{producto.nombre}}</td>   
+                                <td>{{producto.precio}}</td>
+                                <td>{{producto.stock_actual}}</td>
+                                <td>{{producto.proveedor}}</td> 
+                                <td><a href="{% url 'eliminar_producto' producto.id %}">-</a></td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5" style="padding: 0px;">
+                                <div class="alert alert-danger text-center">
+                                    Sin productos
+                                </div>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>    
+            </table>
+            
+        </div>
+        
+        <div style="margin: 15px;">
+            <form action="" method="POST" class="formulario" >
+            {% csrf_token %}
+                <table>
+            
+                    {{mi_formulario.as_table}}
+            
+                </table>
+            
+                <input type="submit" value="Grabar">
+            </form>
+        </div>  
+    </div>    
+{% endblock %}

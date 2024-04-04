@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Contacto {% endblock %}
+
+{% block content %}
+<div class="seccion">
+    <div>
+        <table class="table table-striped" style="margin: 15px; padding: 15px;">
+            <thead>
+                <tr class="table-success">
+                    <th colspan="4" class="text-center"> Tabla de proveedores</th>
+                </tr>
+                <tr class="table-secondary text-center table-sm">
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>DNI</th>
+                    <th>eliminar</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                {% if proveedores %}
+                    {% for proveedor in proveedores %}
+                        <tr class="text-center table-light">
+                            <td>{{proveedor.nombre}}</td>   
+                            <td>{{proveedor.apellido}}</td>
+                            <td>{{proveedor.dni}}</td> 
+                            <td><a href="{% url 'eliminar_proveedor' proveedor.id %}">-</a></td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5" style="padding: 0px;">
+                            <div class="alert alert-danger text-center">
+                                Sin proveedores
+                            </div>
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>    
+        </table>
+        
+    </div>
+    
+    <div style="margin: 15px;">
+        <form action="" method="POST" class="formulario" >
+        {% csrf_token %}
+            <table>
+        
+                {{mi_formulario.as_table}}
+        
+            </table>
+        
+            <input type="submit" value="Grabar">
+        </form>
+    </div>  
+</div>    
+{% endblock %}
